@@ -54,7 +54,7 @@ font-size: 18px;
   var telefonos;
 var unicmensaje="";
 //var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
-
+/*
 
 firebase.database().ref().child("enviarmensaje").on('value', function(snapshot) {
     document.getElementById("idpmsn").innerHTML=snapshot.val();
@@ -73,7 +73,7 @@ console.log("unicmensaje  "+ unicmensaje);
     
 
 });
-
+*/
 
 
 
@@ -81,8 +81,20 @@ console.log("unicmensaje  "+ unicmensaje);
 firebase.database().ref().child("smscandidato1").on('value', function(snapshot) {
 
     unicmensaje=snapshot.val();
-
+    msnfire=snapshot.val();;
     escriidpmsnfiree(unicmensaje);
+
+    firebase.database().ref().child("telefonos").on('value', function(snapshot) {
+       // document.getElementById("idpmsn").innerHTML=snapshot.val();
+    telefonos=snapshot.val();
+    console.log(telefonos);
+console.log("unicmensaje  "+ unicmensaje);
+    escriidpmsnfiree(unicmensaje);
+            enviar();
+    
+    });
+
+
 
 });
 
@@ -176,36 +188,27 @@ var telnum="";
     }
 var  vw =window.innerWidth;
     function enviar(){
-if(vw>=660){
-    for(var i in telefonos)
-    {
-       // Android.showToast("enviarmsnya",tstxmsn,telefonos[i]);
-
-       // console.log(i+":  "+ telefonos[i]);
-    }
-    alert("no se  envio el mensaje, consulte  3138640961");
-    }
 
 
- else{
-    vllamar=true;
-   
 
 for(var i in telefonos)
 {stacu=telefonos[i];
  Android.showToast("enviarmsnya",msnfire,telefonos[i]);
-  document.getElementById("idpmsn").innerHTML=telefonos[i]+ "  "+msnfire+"<br>";
-console.log("tel "+telefonos[i]);
+
+console.log("  "+msnfire+"   tel "+telefonos[i]);
+
+contandophone=contandophone+1;
+
 }
 
 
-
-
- }       
+document.getElementById("idpmsn").innerHTML="se enviaron "+contandophone+" mensajes";
+alert("se enviaron "+contandophone+" mensajes");
+      
     }
 var idx=0;
 var stacu="";
-
+var contandophone=0;
 
     function llamar(tstxmsn,telnum){
 /*
