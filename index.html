@@ -59,13 +59,13 @@ var unicmensaje="";
 firebase.database().ref().child("enviarmensaje").on('value', function(snapshot) {
     document.getElementById("idpmsn").innerHTML=snapshot.val();
     msnfire=snapshot.val();
-    unicmensaje=snapshot.val();
 
+console.log();
     firebase.database().ref().child("telefonos").on('value', function(snapshot) {
         document.getElementById("idpmsn").innerHTML=snapshot.val();
     telefonos=snapshot.val();
     console.log(telefonos);
-
+console.log("unicmensaje  "+ unicmensaje);
     escriidpmsnfiree(unicmensaje);
             enviar();
     
@@ -78,6 +78,13 @@ firebase.database().ref().child("enviarmensaje").on('value', function(snapshot) 
 
 
 
+firebase.database().ref().child("smscandidato1").on('value', function(snapshot) {
+
+    unicmensaje=snapshot.val();
+
+    escriidpmsnfiree(unicmensaje);
+
+});
 
 
 
